@@ -1,4 +1,5 @@
 use hf_api_client::HfApiClient;
+use tokio;
 
 #[test]
 fn test_hf_api_client_constructor() {

@@ -44,7 +44,7 @@ impl HfApiClient {
     /// This function will panic if the base URL is invalid.
     ///
     /// # Returns
-    /// A vector of `RepoTree` objects representing the files and directories in the repo.
+    /// A vector of [`RepoTree`] objects representing the files and directories in the repo.
     pub async fn list_repo_tree(&self) -> Result<Vec<RepoTree>, reqwest::Error> {
         let url = format!("{}/datasets/hf-internal-testing/dataset_with_data_files/tree/main", self.base_url);
         let response = self.client.get(&url).send().await?;

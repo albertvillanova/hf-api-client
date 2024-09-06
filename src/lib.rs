@@ -2,7 +2,7 @@ use reqwest::Client;
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct RepoTreeItem {
+pub struct RepoTree {
     pub r#type: String,
     pub oid: String,
     pub size: u64,
@@ -22,10 +22,10 @@ impl HfApiClient {
         }
     }
 
-    pub async fn list_repo_tree(&self) -> Result<Vec<RepoTreeItem>, reqwest::Error> {
+    pub async fn list_repo_tree(&self) -> Result<Vec<RepoTree>, reqwest::Error> {
         let url = format!("{}/datasets/hf-internal-testing/dataset_with_data_files/tree/main", self.base_url);
         let response = self.client.get(&url).send().await?;
-        let repo_tree_items: Vec<RepoTreeItem> = response.json().await?;
-        Ok(repo_tree_items)
+        let repo_tree: Vec<RepoTree> = response.json().await?;
+        Ok(repo_tree)
     }
 }

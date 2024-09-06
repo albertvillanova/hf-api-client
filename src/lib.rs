@@ -22,19 +22,18 @@ impl HfApiClient {
         }
     }
 
-    /// Lists the repo's tree (files and directories) at a given reference.
+    /// List the repo's tree (files and directories) at a given reference.
     ///
     /// # Example
     /// ```rust
-    /// use hf_api_client::HfApiClient;
-    /// use tokio;
+    /// # async fn run() -> Result<(), Box<dyn std::error::Error>> {
+    /// let repo_tree = hf_api_client::HfApiClient::new()
+    ///     .list_repo_tree()
+    ///     .await?;
     ///
-    /// #[tokio::main]
-    /// async fn main() {
-    ///     let client = HfApiClient::new();
-    ///     let repo_tree = client.list_repo_tree().await.unwrap();
-    ///     println!("{:#?}", repo_tree);
-    /// }
+    /// println!("{:#?}", repo_tree);
+    /// # Ok(())
+    /// # }
     /// ```
     ///
     /// # Errors
